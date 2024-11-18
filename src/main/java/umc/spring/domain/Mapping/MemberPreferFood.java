@@ -8,6 +8,7 @@ import umc.spring.domain.common.BaseEntity;
 @Entity //해당클래스가 JPA의 엔티티임을 명시
 @Getter //getter를 만들어주는 어노테이션
 @Builder
+@Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor //빌더패턴
 

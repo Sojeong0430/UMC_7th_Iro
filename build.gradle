@@ -30,6 +30,10 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation' //의존성 추가
 	implementation 'jakarta.validation:jakarta.validation-api:3.0.2' // 추가
 
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0'//Swaqger
+
+	implementation 'org.springframework.boot:spring-boot-starter-validation' //validation
+
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	annotationProcessor 'org.projectlombok:lombok'
