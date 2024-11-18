@@ -14,15 +14,14 @@ import umc.spring.apiPayload.code.status.SuccessStatus;
 public class ApiResponse<T> { //통일된 API응답을 위한 클래스
 
     @JsonProperty("isSuccess")
-    private final Boolean isSuccess;
-    private final String code;
-    private final String message;
+    private final Boolean isSuccess; //응답 성공 여부를 나타냄
+    private final String code; //응답 코드
+    private final String message; //응답 메세지
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private T result;
+    private T result; //응답 데이터, NULL이 아닐때만 Json에 포함됨
 
 
-    // 성공한 경우 응답 생성
-
+    // 성공한 경우 응답 객체 생성
     public static <T> ApiResponse<T> onSuccess(T result){
         return new ApiResponse<>(true, SuccessStatus._OK.getCode() , SuccessStatus._OK.getMessage(), result);
     }
