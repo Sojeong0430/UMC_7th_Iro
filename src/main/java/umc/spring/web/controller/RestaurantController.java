@@ -12,15 +12,14 @@ import umc.spring.web.dto.RestaurantDTO.RestaurantResponseDTO;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/Restaurant")
+@RequestMapping("/restaurant")
 public class RestaurantController {
 
-    private final RestaurantCommandService restaurantCommandService; //서비스(생성자 주입됨)
-
+    private final RestaurantCommandService restaurantCommandService;
     @PostMapping("/{regionId}")
     public ApiResponse<RestaurantResponseDTO.AddRestaurantResultDTO> AddRestaurant(@PathVariable("regionId") Long regionId, @RequestBody @Valid RestaurantRequestDTO.AddRestaurantDTO request){
 
-        Restaurant restaurant = restaurantCommandService.addRestaurantToRegion(regionId,request); //파라미터의 지역 ID 받기, requestDTO 받아서 서비스로 넘기기
+        Restaurant restaurant = restaurantCommandService.addRestaurantToRegion(regionId,request);
 
         return ApiResponse.onSuccess(RestaurantConverter.AddRestaruantResult(restaurant));
     }
