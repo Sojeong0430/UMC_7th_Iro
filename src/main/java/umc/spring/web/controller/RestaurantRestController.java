@@ -13,7 +13,7 @@ import umc.spring.web.dto.RestaurantDTO.RestaurantResponseDTO;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/restaurant")
-public class RestaurantController {
+public class RestaurantRestController {
 
     private final RestaurantCommandService restaurantCommandService;
     @PostMapping("/{regionId}")
