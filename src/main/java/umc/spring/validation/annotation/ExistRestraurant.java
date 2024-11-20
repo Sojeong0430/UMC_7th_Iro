@@ -2,12 +2,12 @@ package umc.spring.validation.annotation;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
-import umc.spring.validation.validator.RestraurantExistValidation;
+import umc.spring.validation.validator.RestraurantExistValidator;
 
 import java.lang.annotation.*;
 
 @Documented
-@Constraint(validatedBy = RestraurantExistValidation.class)
+@Constraint(validatedBy = RestraurantExistValidator.class)
 @Target( { ElementType.METHOD, ElementType.FIELD, ElementType.PARAMETER })
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ExistRestraurant {

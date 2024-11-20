@@ -5,13 +5,12 @@ import jakarta.validation.ConstraintValidatorContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import umc.spring.apiPayload.code.status.ErrorStatus;
-import umc.spring.domain.Restaurant;
 import umc.spring.repository.RestaurantRepository;
 import umc.spring.validation.annotation.ExistRestraurant;
 
 @Component
 @RequiredArgsConstructor
-public class RestraurantExistValidation implements ConstraintValidator<ExistRestraurant,Long>{
+public class RestraurantExistValidator implements ConstraintValidator<ExistRestraurant,Long>{
 
     private final RestaurantRepository restaurantRepository;
     @Override

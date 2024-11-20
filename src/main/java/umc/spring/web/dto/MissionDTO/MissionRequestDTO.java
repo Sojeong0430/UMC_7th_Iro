@@ -16,4 +16,10 @@ public class MissionRequestDTO {
         @NotNull
         Integer reward;
     }
+
+    @Getter
+    public static class AddMemberMissionDTO{
+        @NotNull
+        Long MissionId;
+    }
 }
