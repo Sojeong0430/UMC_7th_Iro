@@ -9,6 +9,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import umc.spring.domain.Mapping.MemberAgree;
 import umc.spring.domain.Mapping.MemberMission;
 import umc.spring.domain.Mapping.MemberPreferFood;
@@ -20,6 +23,8 @@ import umc.spring.domain.enums.MemberStatus;
 @Entity //해당클래스가 JPA의 엔티티임을 명시
 @Getter //getter를 만들어주는 어노테이션
 @Builder
+@DynamicUpdate
+@DynamicInsert
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor //빌더패턴
 
@@ -37,14 +42,16 @@ public class Member extends BaseEntity {
 
     private LocalDate inactiveDate; // 비활성화일수
 
-    @Column(nullable = false, length = 50)
+    //@Column(nullable = false, length = 50)
     private String email; // 이메일
 
+    @ColumnDefault("0")
     private Integer point; // 소유 포인트
 
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "VARCHAR(15)")
     private Gender gender; // 성별
+
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "VARCHAR(15) DEFAULT 'ACTIVE'")
     private MemberStatus status; //상태
