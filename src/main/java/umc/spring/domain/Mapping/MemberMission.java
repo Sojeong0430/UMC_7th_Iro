@@ -13,6 +13,7 @@ import umc.spring.domain.enums.MissionStatus;
 @Entity
 @Getter
 @Builder
+@Setter
 @DynamicUpdate
 @DynamicInsert
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
