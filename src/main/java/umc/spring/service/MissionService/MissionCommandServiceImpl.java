@@ -2,17 +2,16 @@ package umc.spring.service.MissionService;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import umc.spring.apiPayload.code.status.ErrorStatus;
 import umc.spring.apiPayload.exception.handler.MissionHandler;
 import umc.spring.apiPayload.exception.handler.RestaurantHandler;
 import umc.spring.converter.MemberMissionConverter;
 import umc.spring.converter.MissionConverter;
+import umc.spring.domain.*;
 import umc.spring.domain.Mapping.MemberMission;
-import umc.spring.domain.Member;
-import umc.spring.domain.Mission;
-import umc.spring.domain.Region;
-import umc.spring.domain.Restaurant;
 import umc.spring.repository.MemberMissionRepository;
 import umc.spring.repository.MemberRepository;
 import umc.spring.repository.MissionRepository;
@@ -46,4 +45,12 @@ public class MissionCommandServiceImpl implements MissionCommandService{
         memberMissionRepository.save(memberMission);
         return memberMission;
     }//도전중인 미션 추가
+
+    @Override
+    @Transactional
+    public Page<Mission> getMissionList(Long RestaurantId, Integer page){
+        Restaurant restaurant = restaurantRepository.findById(RestaurantId).get();
+        Page<Mission> RestaurantPage = missionRepository.findAllByRestaurant(restaurant, PageRequest.of(page,10));
+        return RestaurantPage;
+    } //미션 목록 조회
 }

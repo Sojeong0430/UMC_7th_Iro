@@ -15,11 +15,12 @@ public class MissionRequestDTO {
         LocalDate deadline;
         @NotNull
         Integer reward;
-    }
+    }//특정 가게 미션 추가
 
     @Getter
     public static class AddMemberMissionDTO{
         @NotNull
         Long MissionId;
-    }
+    }//도전중인 미션으로 등록
+
 }
