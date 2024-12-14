@@ -18,6 +18,7 @@ import umc.spring.domain.Mapping.MemberPreferFood;
 import umc.spring.domain.common.BaseEntity;
 import umc.spring.domain.enums.Gender;
 import umc.spring.domain.enums.MemberStatus;
+import umc.spring.domain.enums.Role;
 
 
 @Entity //해당클래스가 JPA의 엔티티임을 명시
@@ -42,8 +43,14 @@ public class Member extends BaseEntity {
 
     private LocalDate inactiveDate; // 비활성화일수
 
-    //@Column(nullable = false, length = 50)
+    @Column(nullable = false, unique = true)
     private String email; // 이메일
+
+    @Column(nullable = false)
+    private String password; //패스워드
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     @ColumnDefault("0")
     private Integer point; // 소유 포인트
@@ -71,4 +78,7 @@ public class Member extends BaseEntity {
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<CustomerInquiry> customerInquiryList = new ArrayList<>(); // CustomerInquiry 양방향 연관관계 매핑
 
+    public void encodePassword(String password) {
+        this.password = password;
+    }
 }
